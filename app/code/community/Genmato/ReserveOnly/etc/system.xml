@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <catalog>
+            <groups>
+                <reservedonly>
+                    <label>Reserved Only Products</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <message translate="label comment">
+                            <label>Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Message to show when there's not only a reserved product in the cart</comment>
+                        </message>
+                        <payment_method translate="label comment">
+                            <label>Payment method for reserved products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>genmato_reserveonly/system_config_source_payment</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </payment_method>
+                    </fields>
+                </reservedonly>
+            </groups>
+        </catalog>
+    </sections>
+</config>

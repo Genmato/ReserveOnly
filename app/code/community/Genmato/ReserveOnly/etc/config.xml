@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Genmato_ReserveOnly>
+            <version>15.44.1</version>
+        </Genmato_ReserveOnly>
+    </modules>
+
+    <global>
+        <models>
+            <genmato_reserveonly>
+                <class>Genmato_ReserveOnly_Model</class>
+            </genmato_reserveonly>
+        </models>
+
+        <helpers>
+            <genmato_reserveonly>
+                <class>Genmato_ReserveOnly_Helper</class>
+            </genmato_reserveonly>
+        </helpers>
+
+        <resources>
+            <genmato_reserveonly_setup>
+                <setup>
+                    <module>Genmato_ReserveOnly</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </genmato_reserveonly_setup>
+        </resources>
+
+        <events>
+            <sales_quote_save_before>
+                <observers>
+                    <genmato_reserveonly_check_cart_items>
+                        <type>singleton</type>
+                        <class>genmato_reserveonly/observer</class>
+                        <method>salesQuoteSaveBefore</method>
+                    </genmato_reserveonly_check_cart_items>
+                </observers>
+            </sales_quote_save_before>
+        </events>
+    </global>
+
+    <frontend>
+        <product>
+            <collection>
+                <attributes>
+                    <reserved_product_only/>
+                </attributes>
+            </collection>
+        </product>
+        <events>
+            <payment_method_is_active>
+                <observers>
+                    <genmato_reserveonly_check_payment_method>
+                        <type>singleton</type>
+                        <class>genmato_reserveonly/observer</class>
+                        <method>paymentMethodIsActive</method>
+                    </genmato_reserveonly_check_payment_method>
+                </observers>
+            </payment_method_is_active>
+        </events>
+    </frontend>
+
+    <default>
+        <catalog>
+            <reservedonly>
+                <message>There is a Reservable product in your cart, you can't combine this with other products. Please complete your order as two separate orders.</message>
+            </reservedonly>
+        </catalog>
+    </default>
+</config>
